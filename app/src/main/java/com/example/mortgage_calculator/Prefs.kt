@@ -12,7 +12,6 @@ class Prefs (context1: Context) {
     private var amount:Float=200000.0f
     private var years: Int =15
     private var rate: Float =0.035f
-
     fun setPreferences(mort: Mortgage.Companion) {
         var s: SharedPreferences? =
             context!!.getSharedPreferences("Mortgage", Context.MODE_PRIVATE)

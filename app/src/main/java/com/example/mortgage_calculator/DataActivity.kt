@@ -7,7 +7,7 @@ import com.example.mortgage_calculator.databinding.ActivityDataBinding
 
 class DataActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDataBinding
-    private var mortgage: Mortgage = Mortgage()
+    private var mortgage: Mortgage.Companion = Mortgage
     private val p = Prefs(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,15 +17,15 @@ class DataActivity : AppCompatActivity() {
         setText(mortgage)
     }
 
-//    override fun onStart() {
-//        super.onStart()
-//
-//        p.getPreferences(mortgage)
-//
-//        setText(mortgage)
-//    }
+    override fun onStart() {
+        super.onStart()
 
-    fun setText(mortgage: Mortgage)   {
+        p.getPreferences(mortgage)
+
+        setText(mortgage)
+    }
+
+    fun setText(mortgage: Mortgage.Companion)   {
 
         var amountString = mortgage.getAmount().toString()
         var rateString = mortgage.getRate().toString()
@@ -74,7 +74,7 @@ class DataActivity : AppCompatActivity() {
             mortgage.setAmount(amount)
             val rate: Float = rateString.toFloat()
             mortgage.setRate(rate)
-            p.setPreferences(Mortgage)
+            p.setPreferences(mortgage)
         } catch (nfe: NumberFormatException) {
             mortgage.setAmount(100000.0f)
             mortgage.setRate(.035f)
