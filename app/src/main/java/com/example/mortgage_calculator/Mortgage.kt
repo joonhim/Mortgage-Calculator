@@ -12,8 +12,6 @@ class Mortgage {
         const val PREFERENCE_YEARS = "years"
         const val PREFERENCE_RATE = "rate"
         const val TAG = "MyActivity"
-        fun Mortgage() {
-        }
 
         fun setAmount(newAmount: Float) {
             if (newAmount >= 0) amount = newAmount
@@ -69,22 +67,6 @@ class Mortgage {
             else
                 return MONEY.format(totalPayment())
         }
-    }
-
-    private var amount = 200000.0f
-    private var years = 15
-    private var rate = 0.035f
-    fun monthlyPayment(): Float {
-        val mRate = rate / 12 // monthly interest rate
-        val temp = Math.pow(
-            (1 / (1 + mRate)).toDouble(), (years *
-                    12).toDouble()
-        )
-        return amount * mRate / (1 - temp).toFloat()
-    }
-
-    fun totalPayment(): Float {
-        return monthlyPayment() * years * 12
     }
 }
     private var amount = 200000.0f
